@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b12">
+  <title>Backrooms — Kein Licht mehr</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="game" aria-label="3D-Spielwelt"></div>
+  <div class="loading" id="loading">SIGNAL WIRD INITIALISIERT</div>
+
+  <header class="topbar" aria-label="Backrooms">
+    <div class="brand-mark">B</div>
+    <div><div class="brand-name">BACKROOMS</div><div class="brand-sub">KEIN LICHT MEHR</div></div>
+  </header>
+
+  <section class="hud" aria-label="Spielstatus">
+    <div class="hud-card"><div class="eyebrow">ÜBERLEBT</div><div class="hud-value" id="survival-time">00:00</div></div>
+  </section>
+
+  <aside class="phone" aria-label="Handy und Taschenlampen-Akku">
+    <div class="phone-top"><span class="phone-speaker"></span><span class="eyebrow">DEIN HANDY</span></div>
+    <div class="battery-row"><span class="eyebrow">AKKU</span><strong id="battery-level">100%</strong></div>
+    <div class="battery-track"><span id="battery-fill"></span></div>
+    <div class="phone-bottom">
+      <span class="eyebrow">ERSATZHANDYS</span><strong id="spare-phones">00</strong>
+    </div>
+    <div class="phone-bottom towel-count">
+      <span class="eyebrow">HANDTÜCHER</span><strong id="towel-count">00</strong>
+    </div>
+    <div id="hide-status" class="phone-bottom hide-status" hidden>
+      <span class="eyebrow">UNTER DEM HANDTUCH</span><strong id="hide-timer">8 s</strong>
+    </div>
+    <button id="map-toggle" class="map-toggle" type="button" aria-pressed="false">KARTE AN</button>
+    <div id="map-card" class="map-card" hidden>
+      <div class="map-heading"><span class="eyebrow">UMGEBUNG</span><span>LIVE</span></div>
+      <canvas id="minimap" width="171" height="171" aria-label="Karte der Umgebung"></canvas>
+    </div>
+  </aside>
+
+  <div class="crosshair" aria-hidden="true"></div>
+  <div id="hide-veil" class="hide-veil" hidden aria-hidden="true"></div>
+  <div id="message" class="message" role="status" aria-live="polite"></div>
+  <div class="controls-hint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> bewegen · Maus umsehen · <kbd>F</kbd> Licht · <kbd>M</kbd> Karte · <kbd>E</kbd> laden/verstecken · <kbd>Shift</kbd> sprinten · <kbd>Esc</kbd> Pause</div>
+
+  <main class="overlay" id="overlay">
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+      <div class="dialog-kicker" id="dialog-kicker">DU BIST NICHT ALLEIN · KEIN AUSGANG IN SICHT</div>
+      <h1 id="dialog-title">KEIN LICHT<br><span>MEHR</span></h1>
+      <p class="dialog-copy" id="dialog-copy">Deine Handytaschenlampe ist deine einzige Lichtquelle. Halte sie so lange wie möglich am Leben und pass auf den Schulleiter auf: Er nimmt dir Handys ab. Mit einem Handtuch kannst du dich kurz vor ihm verstecken.</p>
+      <div class="mission"><span>Akku im Blick behalten</span><span>Handtücher zum Verstecken finden</span></div>
+      <button class="start-button" id="start-button" type="button">BACKROOMS BETRETEN&nbsp; →</button>
+      <div class="footnote">WASD bewegen · Maus umsehen · F Licht an/aus · M Karte (verbraucht mehr Akku)<br>E an Ladestationen laden oder ein Handtuch zum Verstecken verbrauchen.</div>
+    </section>
+  </main>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
